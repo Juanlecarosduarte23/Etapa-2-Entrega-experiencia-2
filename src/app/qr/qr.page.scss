@@ -1,0 +1,12 @@
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .qr-container qrcode {
+    margin-top: 10px;  
+  }

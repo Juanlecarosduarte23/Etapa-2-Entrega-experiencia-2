@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Mis clases</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+
+  <ion-list>
+    <ion-item *ngFor="let registro of registros" (click)="seleccionarRegistro(registro)">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="registro.imagenBase64"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+       
+        <p><strong>Asignatura:</strong> {{ registro.asignatura }}</p>
+        <p><strong>Profesor:</strong> {{ registro.profesor }}</p>
+        <p><strong>Fecha:</strong> {{ registro.fecha }}</p>
+        <p><strong>Rut:</strong> {{ registro.rut }}</p>
+        <p><strong>Correo:</strong> {{ registro.correo }}</p>
+      </ion-label>
+      <ion-button *ngIf="registro.id !== undefined" color="danger" slot="end" (click)="eliminarRegistro(registro.id)">
+        Eliminar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

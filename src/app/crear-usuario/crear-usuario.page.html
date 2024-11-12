@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="end" name="menu-outline" size="large" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Crear usuario nuevo
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button
+        defaultHref="/"
+        text=""
+        color="dark"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <img src="../assets/cara.png">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Crear Usuario</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+ 
+   <form [formGroup]="registroForm">
+      <ion-item>
+        <ion-input type="text" placeholder="Ingrese usuario nuevo" formControlName="username" label="Usuario" labelPlacement="floating"></ion-input>
+      </ion-item>
+  
+        <div id="alerta" *ngIf="registroForm.get('username')?.invalid && (registroForm.get('username')?.dirty || 
+                    registroForm.get('username')?.touched)">
+            <div id="alerta" *ngIf="registroForm.get('username')?.hasError('required')">
+              *El nombre de usuario es obligatorio
+            </div>
+            <div id="alerta" *ngIf="registroForm.get('username')?.hasError('minlength')">
+              *El nombre de usuario debe tener mínimo 6 caracteres
+            </div>
+        </div>
+  
+      <ion-item>
+        <ion-input type="email" formControlName="email" label="Email:" labelPlacement="floating"></ion-input>
+      </ion-item>
+  
+        <div id="alerta" *ngIf="registroForm.get('email')?.invalid && (registroForm.get('email')?.dirty || 
+                    registroForm.get('email')?.touched)">
+            <div id="alerta" *ngIf="registroForm.get('email')?.hasError('required')">
+              *El email es obligatorio
+            </div>
+            <div id="alerta" *ngIf="registroForm.get('email')?.hasError('email')">
+              *Formato no válido
+            </div>
+        </div>
+  
+      <ion-item>
+        <ion-input type="password" formControlName="password" label="Contraseña:" labelPlacement="floating"></ion-input>
+      </ion-item>
+  
+        <div id="alerta" *ngIf="registroForm.get('password')?.invalid && (registroForm.get('password')?.dirty || 
+                    registroForm.get('password')?.touched)">
+            <div id="alerta" *ngIf="registroForm.get('password')?.hasError('required')">
+              *La contraseña es obligatoria
+            </div>
+            <div id="alerta" *ngIf="registroForm.get('password')?.hasError('pattern')">
+              *La contraseña debe tener mínimo 8 caracteres, una letra y un número
+            </div>
+        </div>
+      
+      <div style="text-align: center; margin-top: 30px;">
+        <ion-button (click)="crearUsuario()" [disabled]="!registroForm.valid" shape="round">
+          Crear Usuario
+        </ion-button>
+      </div>
+      
+    </form>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-title>App Alumno</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+

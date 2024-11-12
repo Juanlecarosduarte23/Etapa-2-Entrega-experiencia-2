@@ -1,0 +1,82 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Gestionar Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="alertaVisible" [ngClass]="{'alert-success': alertaTipo === 'success', 'alert-error': alertaTipo === 'error'}" class="alert">
+    {{ alertaMensaje }}
+  </div>
+
+
+  <form (ngSubmit)="perfilSeleccionado ? actualizarPerfil() : cargarPerfil()">
+    
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="nombre" name="nombre" type="text" required></ion-input>
+    </ion-item>
+
+   
+    <ion-item>
+      <ion-label position="floating">Carrera</ion-label>
+      <ion-input [(ngModel)]="carrera" name="carrera" type="text" required></ion-input>
+    </ion-item>
+
+  
+    <ion-item>
+      <ion-label position="floating">Sede</ion-label>
+      <ion-input [(ngModel)]="sede" name="sede" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input [(ngModel)]="telefono" name="telefono" type="text" required></ion-input>
+    </ion-item>
+
+   
+    <ion-item>
+      <ion-label position="floating">Dirección</ion-label>
+      <ion-input [(ngModel)]="direccion" name="direccion" type="text" required></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Seleccionar Imagen</ion-label>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+    </ion-item>
+
+
+    <div *ngIf="base64">
+      <ion-img [src]="base64" alt="Imagen cargada" class="preview-image"></ion-img>
+    </div>
+
+
+    <ion-button expand="full" type="submit" [color]="perfilSeleccionado ? 'warning' : 'primary'">
+      {{ perfilSeleccionado ? 'Actualizar Perfil' : 'Cargar Perfil' }}
+    </ion-button>
+
+  </form>
+
+
+  <ion-title>Mis Perfiles</ion-title>
+  <ion-list>
+    <ion-item *ngFor="let perfil of perfiles" (click)="seleccionarPerfil(perfil)">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="perfil.base64"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ perfil.nombre }}</h2>
+        <p>{{ perfil.carrera }}</p>
+        <p><strong>Sede:</strong> {{ perfil.sede }}</p>
+        <p><strong>Teléfono:</strong> {{ perfil.telefono }}</p>
+        <p><strong>Dirección:</strong> {{ perfil.direccion }}</p>
+      </ion-label>
+      <ion-button *ngIf="perfil.id !== undefined" color="danger" slot="end" (click)="eliminarPerfil(perfil.id)">
+        Eliminar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

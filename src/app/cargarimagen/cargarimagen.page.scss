@@ -1,0 +1,122 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 0 auto;
+  }
+  
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #4CAF50;
+  }
+  
+
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+  }
+  
+  input[type="file"] {
+    padding: 0;
+    background-color: transparent;
+    margin-bottom: 20px;
+  }
+  
+
+  img {
+    max-width: 50%;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: center;
+  }
+  
+  button:disabled {
+    background-color: #b2dfdb;
+    cursor: not-allowed;
+  }
+  
+  button:hover:not(:disabled) {
+    background-color: #45a049;
+  }
+  
+
+  .imagenes-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
+  }
+  
+  .imagen-item {
+    text-align: center;
+    width: 120px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .imagen-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  .imagen-item:hover {
+    transform: scale(1.1);
+  }
+  
+  .imagen-item p {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  .formulario-carga {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formulario-carga .input-container {
+    margin-bottom: 20px;
+  }
+  
+
+  .alert {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    background-color: #f44336;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  

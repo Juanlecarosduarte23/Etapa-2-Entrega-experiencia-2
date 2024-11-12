@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Generar QR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="alertaVisible" [ngClass]="{'alert-success': alertaTipo === 'success', 'alert-error': alertaTipo === 'error'}" class="alert">
+    {{ alertaMensaje }}
+  </div>
+
+  <form (ngSubmit)="registroSeleccionado ? actualizarRegistro() : cargarRegistro()">
+    
+   
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="nombre" name="nombre" type="text" required></ion-input>
+    </ion-item>
+
+ 
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input [(ngModel)]="descripcion" name="descripcion" type="text" required></ion-input>
+    </ion-item>
+
+   
+    <ion-item>
+      <ion-label position="floating">Asignatura</ion-label>
+      <ion-input [(ngModel)]="asignatura" name="asignatura" type="text" required></ion-input>
+    </ion-item>
+
+
+   
+    <ion-item>
+      <ion-label position="floating">Profesor</ion-label>
+      <ion-input [(ngModel)]="profesor" name="profesor" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">RUT</ion-label>
+      <ion-input [(ngModel)]="rut" name="rut" type="text" required></ion-input>
+    </ion-item>
+
+ 
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input [(ngModel)]="correo" name="correo" type="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Seleccionar Imagen</ion-label>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+    </ion-item>
+
+    <div *ngIf="imagenBase64">
+      <ion-img [src]="imagenBase64" alt="Imagen cargada" class="preview-image"></ion-img>
+    </div>
+
+   
+
+
+    <ion-button expand="full" (click)="generarCodigoQR()">Generar Código QR</ion-button>
+
+
+    <div *ngIf="qrData" class="qr-container">
+      <h3>Código QR Generado</h3>
+      <qrcode [qrdata]="qrData" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+    </div>
+
+   
+    <ion-button type="submit" expand="full">Cargar Registro</ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Justificar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <form (ngSubmit)="imagenSeleccionada ? actualizarImagen() : cargarImagen()">
+
+    <ion-item>
+      <ion-label position="floating">Nombre Alumno</ion-label>
+      <ion-input [(ngModel)]="nombreImagen" name="nombreImagen" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input [(ngModel)]="descripcion" name="descripcion" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Asignatura</ion-label>
+      <ion-input [(ngModel)]="asignatura" name="asignatura" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Profesor</ion-label>
+      <ion-input [(ngModel)]="profesor" name="profesor" type="text" required></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Seleccionar Imagen</ion-label>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+    </ion-item>
+
+    <div *ngIf="imagenBase64">
+      <ion-img [src]="imagenBase64" alt="Imagen cargada" class="preview-image"></ion-img>
+    </div>
+
+ 
+    <ion-button expand="full" type="submit" [color]="imagenSeleccionada ? 'warning' : 'primary'">
+      {{ imagenSeleccionada ? 'Actualizar Imagen' : 'Cargar Imagen' }}
+    </ion-button>
+
+    <div *ngIf="alertaVisible" [ngClass]="{'alert-success': alertaTipo === 'success', 'alert-error': alertaTipo === 'error'}" class="alert">
+      {{ alertaMensaje }}
+    </div>
+
+    
+  </form>
+
+
+  <ion-title>Mis justificaciónes</ion-title>
+  <ion-list>
+    <ion-item *ngFor="let imagen of imagenes" (click)="seleccionarImagen(imagen)">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="imagen.base64"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ imagen.nombre }}</h2>
+        <p>{{ imagen.descripcion }}</p>
+        <p><strong>Asignatura:</strong> {{ imagen.asignatura }}</p>
+        <p><strong>Profesor:</strong> {{ imagen.profesor }}</p>
+        <p><small>Fecha: {{ imagen.fecha }}</small></p>
+      </ion-label>
+      <ion-button *ngIf="imagen.id !== undefined" color="danger" slot="end" (click)="eliminarImagen(imagen.id)">
+        Eliminar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+  
+
+
+
+
+

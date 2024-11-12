@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Inicio de Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <img src="../assets/logo.png">
+
+  
+
+
+  <form [formGroup]="loginForm">
+    <ion-item>
+      <ion-input type="text" placeholder="Ingrese usuario" label="Usuario:" labelPlacement="floating"
+          formControlName="username">
+      </ion-input>
+    </ion-item>
+
+      <div id="alerta" *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || 
+                  loginForm.get('username')?.touched)">
+        <div id="alerta" *ngIf="loginForm.get('username')?.hasError('required')">
+          *El usuario es obligatorio
+        </div>
+        <div id="alerta" *ngIf="loginForm.get('username')?.hasError('minlength')">
+          *El usuario debe tener mínimo 6 caracteres
+        </div>
+      </div>
+
+    <ion-item>
+      <ion-input type="password" placeholder="Ingrese Contraseña" label="Contraseña:" labelPlacement="floating"
+          formControlName="password">
+      </ion-input>
+    </ion-item>
+
+    <div id="alerta" *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || 
+                loginForm.get('password')?.touched)">
+      <div id="alerta" *ngIf="loginForm.get('password')?.hasError('required')">
+        *contraseña es obligatoria
+      </div>
+      <div id="alerta" *ngIf="loginForm.get('password')?.hasError('minlength')">
+        *contraseña debe tener mínimo 8 caracteres
+      </div>
+    </div>
+
+
+    <div style="text-align: center; margin-top:30px">
+      <ion-button (click)="login()" [disabled]="!loginForm.valid" shape="round" color="primary">
+        Ingresar
+      </ion-button> 
+    </div>
+    <div style="text-align: center;">
+      <ion-button (click)="Registrar()"  shape="round" color="success">
+        Registrarse
+      </ion-button>
+    </div>
+  </form>
+</ion-content>
+

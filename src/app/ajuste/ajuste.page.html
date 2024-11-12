@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="end" name="menu-outline" size="large" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Ajustes
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button
+        defaultHref="/"
+        text=""
+        color="dark"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="fondohome">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      
+    </ion-toolbar>
+  </ion-header>
+
+
+    <ion-content>
+      <ion-list [inset]="true">
+        <ion-item [button]="true">
+          <ion-icon color="danger" slot="start" name="list-circle" size="large"></ion-icon>
+          <ion-label>General</ion-label>
+          <ion-note slot="end">6</ion-note>
+        </ion-item>
+        <ion-item [button]="true">
+          <ion-icon color="tertiary" slot="start" name="volume-mute" size="large"></ion-icon>
+          <ion-label>Volumen</ion-label>
+          <ion-note slot="end">15</ion-note>
+        </ion-item>
+        <ion-item [button]="true">
+          <ion-icon color="success" slot="start" name="sunny" size="large"></ion-icon>
+          <ion-label>Brillo</ion-label>
+          <ion-note slot="end">3</ion-note>
+        </ion-item>
+        <ion-item [button]="true">
+          <ion-icon color="warning" slot="start" name="battery-half" size="large"></ion-icon>
+          <ion-label>Bateria</ion-label>
+          <ion-note slot="end">8</ion-note>
+        </ion-item>
+
+
+        <ion-item [button]="true">
+          <ion-icon color="ligth" slot="start" name="navigate" size="large"></ion-icon>
+          <ion-label>Locación</ion-label>
+          <ion-note slot="end">8</ion-note>
+        </ion-item>
+
+        <ion-item [button]="true">
+          <ion-icon color="success" slot="start" name="key" size="large"></ion-icon>
+          <ion-label>Seguridad</ion-label>
+          <ion-note slot="end">8</ion-note>
+        </ion-item>
+
+        <ion-item [button]="true">
+          <ion-icon color="primary" slot="start" name="text" size="large"></ion-icon>
+          <ion-label>Lenguaje</ion-label>
+          <ion-note slot="end">8</ion-note>
+        </ion-item>
+
+        <ion-item [button]="true">
+          <ion-icon color="medium" slot="start" name="refresh" size="large"></ion-icon>
+          <ion-label>Resetear</ion-label>
+          <ion-note slot="end">8</ion-note>
+        </ion-item>
+        <ion-item [button]="true">
+          <ion-icon color="warning " slot="start" name="save" size="large"></ion-icon>
+          <ion-label>Respaldo</ion-label>
+          <ion-note slot="end">8</ion-note>
+        </ion-item>
+
+        <ion-item [button]="true">
+          <ion-icon color="secondary" slot="start" name="camera-reverse" size="large"></ion-icon>
+          <ion-label>Versión</ion-label>
+          <ion-note slot="end">8</ion-note>
+        </ion-item>
+
+
+      </ion-list>
+
+      
